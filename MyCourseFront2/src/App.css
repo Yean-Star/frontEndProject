@@ -1,0 +1,43 @@
+.cardx {
+  margin: auto;
+  width: 150px;
+  text-align:center;
+  border: 2px solid rgb(37, 68, 204);
+  border-radius: 5px;
+  display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.cardx img{
+  width: 150px;
+  height: 208px;
+  margin: auto;
+  object-fit: cover;
+}
+
+.myNavLink {
+  text-decoration: none;
+  color:rgb(132, 122, 10);
+  font-size : 30px;
+}
+
+.myNavLink:hover{
+  color:rgb(29, 34, 5)
+}
+
+.myLink {
+  text-decoration: none;
+  font-weight: 700;
+  color:rgb(52, 55, 49)
+}
+
+.icon-frame {
+  border: 1px solid #cb10dc; /* Adjust the border properties as desired */
+  padding: 1px; /* Adjust the padding as desired */
+  margin-bottom: 1px;
+  /* Add any additional styling for the frame */
+}
+
+.seeMoreCourse{
+  background-color: rgb(0, 0, 0);
+  border-style: groove;
+}
