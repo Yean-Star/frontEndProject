@@ -8,90 +8,95 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import glovalVars from './globalVar'
-import monkeyBook from './image/monkeyStudy.jpg';
+import monkeyBook from './image/monkeyhandsup.png';
 
 import './App.css';
 
 
 
 function Register(prop) {
-  const {setTokenFn} = prop;
+  const { setTokenFn } = prop;
   const [errorMessage, setErrorMessage] = useState("");
   const [form, setForm] = useState({
-    firstname:'',
-    lastname:'',
+    firstname: '',
+    lastname: '',
     email: '',
     password: '',
-    conpassword:''
+    conpassword: ''
   });
   const navigate = useNavigate();
 
-  function submitButton(e){
+  function submitButton(e) {
     e.preventDefault();
     console.log(form);
-    const bodyData = JSON.stringify({user:{email:form.email,password:form.password}})
-    const headerInfo = {method:"POST",
-                        body:bodyData,
-                        headers:{'Content-Type' : 'application/json'}}
+    const bodyData = JSON.stringify({ user: { email: form.email, password: form.password } })
+    const headerInfo = {
+      method: "POST",
+      body: bodyData,
+      headers: { 'Content-Type': 'application/json' }
+    }
     const url = glovalVars.hostUrl + '/register';
-    fetch(url,headerInfo)
-    .then(response=>{
-      console.log(response);
-      if(response.status === 401){
-        throw new Error("Login Fail.")
-      }
-      else{
-        return response.json()
-      }
-    }).then(data =>{
-      console.log(data.token)
-      setTokenFn({token:data.token,email:form.email})
-      setErrorMessage("");
-      resetButton();
-      navigate('/mycourses')
-    }).catch(err=>{
-      console.log(err.message)
-      setTokenFn(null);
-      setErrorMessage(err.message)
-    })
-    
- 
+    fetch(url, headerInfo)
+      .then(response => {
+        console.log(response);
+        if (response.status === 401) {
+          throw new Error("Login Fail.")
+        }
+        else {
+          return response.json()
+        }
+      }).then(data => {
+        console.log(data.token)
+        setTokenFn({ token: data.token, email: form.email })
+        setErrorMessage("");
+        resetButton();
+        navigate('/mycourses')
+      }).catch(err => {
+        console.log(err.message)
+        setTokenFn(null);
+        setErrorMessage(err.message)
+      })
+
+
   }
-  function resetButton () {
+  function resetButton() {
     setForm(
       {
-        firstname:'',
-        lastname:'',
+        firstname: '',
+        lastname: '',
         email: '',
         password: '',
-        conpassword:''
+        conpassword: ''
       });
   }
 
-  function submitButton(e){
-    if(form.password !== form.conpassword){
+  function submitButton(e) {
+    if (form.password !== form.conpassword) {
       setErrorMessage("Password not match")
       return
     }
-    const bodyData = JSON.stringify({user:{firstname:form.firstname,lastname:form.lastname,email:form.email,password:form.password}})
-    const headerInfo = {method:"POST",
-                        body:bodyData,
-                        headers:{'Content-Type' : 'application/json'}}
+    const bodyData = JSON.stringify({ user: { firstname: form.firstname, lastname: form.lastname, email: form.email, password: form.password } })
+    console.log(bodyData)
+    const headerInfo = {
+      method: "POST",
+      body: bodyData,
+      headers: { 'Content-Type': 'application/json' }
+    }
     const url = glovalVars.hostUrl + '/register';
-    fetch(url,headerInfo)
-    .then(response=>{
-      console.log(response);
-      if(response.status === 401){
-        throw new Error("Register Fail.")
-      }
-      else{
-        setErrorMessage("");
-        navigate('/login')
-      }
-    }).catch(err=>{
-      console.log(err.message)
-      setErrorMessage(err.message)
-    })
+    fetch(url, headerInfo)
+      .then(response => {
+        console.log(response);
+        if (response.status === 401) {
+          throw new Error("Register Fail.")
+        }
+        else {
+          setErrorMessage("");
+          navigate('/login')
+        }
+      }).catch(err => {
+        console.log(err.message)
+        setErrorMessage(err.message)
+      })
   }
 
   return (
@@ -104,14 +109,45 @@ function Register(prop) {
             <Card.Header as="h5">Register to Monkey Course</Card.Header>
             <Card.Body>
               <Form>
+                <Row className="mb-3" controlId="formBasicNames">
+                  <Col xs={6}>
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter first name"
+                      name="firstname"
+                      value={form.firstname}
+                      onChange={(event) => {
+                        setForm({ ...form, firstname: event.target.value });
+                      }}
+                    />
+                  </Col>
+                  <Col xs={6}>
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter last name"
+                      name="lastname"
+                      value={form.lastname}
+                      onChange={(event) => {
+                        setForm({ ...form, lastname: event.target.value });
+                      }}
+                    />
+                  </Col>
+                </Row>
+
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" name="email" value={form.email} 
-                  onChange={(event)=>{setForm( {email: event.target.value, 
-                  password:form.password,
-                  firstname:form.firstname,
-                  lastname:form.lastname,
-                  conpassword:form.conpassword} )}}/>
+                  <Form.Control type="email" placeholder="Enter email" name="email" value={form.email}
+                    onChange={(event) => {
+                      setForm({
+                        email: event.target.value,
+                        password: form.password,
+                        firstname: form.firstname,
+                        lastname: form.lastname,
+                        conpassword: form.conpassword
+                      })
+                    }} />
                   <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
                   </Form.Text>
@@ -119,27 +155,35 @@ function Register(prop) {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" name="password" value={form.password} 
-                  onChange={(event)=>{setForm( {password: event.target.value, 
-                  email:form.email,
-                  firstname:form.firstname,
-                  lastname:form.lastname,
-                  conpassword:form.conpassword} )}} />
+                  <Form.Control type="password" placeholder="Password" name="password" value={form.password}
+                    onChange={(event) => {
+                      setForm({
+                        password: event.target.value,
+                        email: form.email,
+                        firstname: form.firstname,
+                        lastname: form.lastname,
+                        conpassword: form.conpassword
+                      })
+                    }} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="confirmPassword">
                   <Form.Label>Confirm Password</Form.Label>
-                  <Form.Control type="conpassword" placeholder="Confirm Password" name="conpassword" value={form.conpassword} 
-                  onChange={(event)=>{setForm( {conpassword: event.target.value,
-                    password:form.password, 
-                    email:form.email,
-                    firstname:form.firstname,
-                    lastname:form.lastname} )
-                  if(event.target.value !== form.password  ){
-                    setErrorMessage("Password not match monk")
-                  }else{
-                    setErrorMessage("")
-                  }}} />
+                  <Form.Control type="password" placeholder="Confirm Password" name="conpassword" value={form.conpassword}
+                    onChange={(event) => {
+                      setForm({
+                        conpassword: event.target.value,
+                        password: form.password,
+                        email: form.email,
+                        firstname: form.firstname,
+                        lastname: form.lastname
+                      })
+                      if (event.target.value !== form.password) {
+                        setErrorMessage("Password not match")
+                      } else {
+                        setErrorMessage("")
+                      }
+                    }} />
                 </Form.Group>
 
                 <Button variant="primary" onClick={submitButton}>
@@ -154,9 +198,10 @@ function Register(prop) {
       <Row className="justify-content-center" style={{ marginTop: '20px' }}>
         <Card className="pt-2" style={{ width: 'fit-content', padding: '13px', fontSize: '50px', borderStyle: 'hidden' }}  >
           <Col className="text-end">
-            <img src={monkeyBook} alt="Image" width="200"
-              height="200" style={{ marginRight: '10px' }} />
-           Unlock the benefits of being one of monkey </Col>
+            <img src={monkeyBook} alt="Image" width="150"
+              height="200" style={{ marginRight: '50px' }} />
+              
+            Unlock the benefits of being one of monkey </Col>
         </Card>
       </Row>
     </Container>

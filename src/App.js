@@ -13,15 +13,23 @@ import Login from './Login';
 import Register from './Register';
 import ChooseCourseList from './ChooseCourseList';
 import AboutUs from './AboutUs';
+import RemoveCourse from './RemoveCourse';
+import { useNavigate } from 'react-router-dom';
 
 import bearIcon from './image/monkey.png';
 
 function App() {
   const [content, setContent] = useState(-1);
   const [tokenData, setToken] = useState(null);
+  const [idData,setId] = useState(-1);
+
+  const navigate = useNavigate();
   function handleClick(contentId) {
     setContent(contentId);
   }
+
+  const isLoggedIn = tokenData !== null;
+
   return (
     <>
       <Navbar collapseOnSelect expand="lg"  variant="info" style={{ height: '80px', backgroundColor: '#FFF9DE' }}>
@@ -53,15 +61,15 @@ function App() {
               
             </Nav>
             <Nav activeKey={content}>
-              <Card className="icon-frame">
-                <Card.Body>
-                  <Nav.Link as={Link} eventKey={3} to="/login" onClick={() => handleClick(3)}>
+              <Card style={{ marginRight: '5px'}}>
+                <Card.Body style={{ fontWeight: '700'}}> 
+                  <Nav.Link as={Link} eventKey={3} to="/login" onClick={() => handleClick(3)} >
                     Login
                   </Nav.Link>
                 </Card.Body>
               </Card>
-              <Card className="icon-frame">
-                <Card.Body>
+              <Card>
+                <Card.Body style={{ fontWeight: '700'}}>
                   <Nav.Link as={Link} eventKey={4} to="/register" onClick={() => handleClick(4)}>
                     Register
                   </Nav.Link>
@@ -77,9 +85,10 @@ function App() {
         <Route path="/courses" element={<CourseList />} />
         <Route path="/mycourses" element={<MyCourses token={tokenData} />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/login" element={<Login token={tokenData} setTokenFn={setToken} />} />
-        <Route path="/register" element={<Register token={tokenData} setTokenFn={setToken} />} />
-        <Route path="/choosecourse" element={<ChooseCourseList />} />
+        <Route path="/login" element={<Login token={tokenData} setTokenFn={setToken} id = {idData} setIdFn = {setId} />} />
+        <Route path="/register" element={<Register/>} />
+        <Route path="/choosecourse" element={<ChooseCourseList id = {idData} />} />
+        <Route path="/removemyCourses" element={<RemoveCourse id = {idData}  />} />
       </Routes>
 
     </>

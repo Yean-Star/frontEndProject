@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import book from './image/book1.jpg';
+import monkeySteal from './image/612.jpg';
 import work from './image/work.jpg';
-import classroom from './image/classroom.jpg';
-import monkeyBook from './image/monkeyBook.png';
+import monkeyKid from './image/istockphoto.jpg';
+import monkeyBook from './image/monkeyhandsup.jpg';
+import monkeyEating from './image/eating.jpg'
+import blackmonkey from './image/blackmonkey.jpg'
+import monkeyAttack from './image/monkeyattack.jpg'
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -42,31 +45,31 @@ function HomePage(prop) {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src={book}
+                  src={monkeyEating}
                   alt="Unlock your potential with our courses"
                 />
                 <Carousel.Caption>
-                  <h5>Unlock your potential with our courses</h5>
+                  <h5>Leap into the unknown with the courage of a monkey</h5>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src={classroom}
+                  src={monkeyBook}
                   alt="Transform your future with education"
                 />
                 <Carousel.Caption>
-                  <h5>Transform your future with education</h5>
+                  <h5>Have the courage of a monkey to venture outside your comfort zone</h5>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src={work}
+                  src={monkeyKid}
                   alt="Upgrade your skills"
                 />
                 <Carousel.Caption>
-                  <h5>Upgrade your skills</h5>
+                  <h5>Success awaits those who dare to learn.</h5>
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
@@ -74,88 +77,65 @@ function HomePage(prop) {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src={book}
+                  src={blackmonkey}
                   alt="Unlock your potential with our courses"
                 />
                 <Carousel.Caption>
-                  <h5>Unlock your potential with our courses</h5>
+                  <h5>Let courage be your guiding light as you embark on your learning journey.</h5>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src={classroom}
+                  src={monkeySteal}
                   alt="Transform your future with education"
                 />
                 <Carousel.Caption>
-                  <h5>Transform your future with education</h5>
+                  <h5>Trust in your abilities and embrace the challenges.</h5>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src={work}
+                  src={monkeyAttack}
                   alt="Upgrade your skills"
                 />
                 <Carousel.Caption>
-                  <h5>Upgrade your skills</h5>
+                  <h5>With the best steal technique</h5>
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
           </div>
-          
+
 
         </Col>
       </Row>
 
-      <Row className="justify-content-center" style={{ backgroundColor: '#FFF9DE', marginTop: '20px' }}>
-        <Col className="text-left"></Col>
-        <Carousel>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={book}
-                  alt="Unlock your potential with our courses"
-                />
-                <Carousel.Caption>
-                  <h5>Unlock your potential with our courses</h5>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={classroom}
-                  alt="Transform your future with education"
-                />
-                <Carousel.Caption>
-                  <h5>Transform your future with education</h5>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={work}
-                  alt="Upgrade your skills"
-                />
-                <Carousel.Caption>
-                  <h5>Upgrade your skills</h5>
-                </Carousel.Caption>
-              </Carousel.Item>
-            </Carousel>
-      </Row>
 
+      <Row className="justify-content-center" style={{ marginTop: '20px', marginBottom: '20px' }}>
+        <Card className="pt-2" style={{
+          width: 'fit-content',
+          padding: '13px',
+          fontSize: '30px',
+          backgroundColor: '#F9FBE7',
+          border: '2px solid #ccc',
+          borderRadius: '10px',
+        }}  >
+          <Col className="text-end " ><Link className="myLink" to="/courses">
 
-      <Row className="justify-content-center" style={{ marginTop: '20px' }}>
-        <Card className="pt-2" style={{ width: 'fit-content', padding: '13px', fontSize: '50px', backgroundColor: '#F9FBE7', borderStyle: 'groove' }}  >
-          <Col className="text-end"><Link className="myLink" to="/courses">
-            <img src={monkeyBook} alt="Image" width="80"
-              height="80" style={{ marginRight: '10px' }} />
-            See all Courses </Link></Col>
+            See our Courses </Link></Col>
         </Card>
-        <Card className="pt-2" style={{ width: 'fit-content', padding: '13px', fontSize: '50px', backgroundColor: '#F9FBE7', borderStyle: 'groove',marginLeft: '20px' }}  >
+        <Card className="pt-2" style={{
+          width: 'fit-content',
+          padding: '13px',
+          fontSize: '30px',
+          backgroundColor: '#F9FBE7',
+          border: '2px solid #ccc',
+          borderRadius: '10px',
+          marginLeft: '80px'
+        }}  >
           <Col className="text-end"><Link className="myLink" to="/aboutus">
-            <img src={monkeyBook} alt="Image" width="80"
-              height="80" style={{ marginRight: '10px' }} />
+
             About us </Link></Col>
         </Card>
       </Row>

@@ -15,6 +15,7 @@ import './App.css';
 
 function Login(prop) {
   const {setTokenFn} = prop;
+  const {setIdFn} = prop;
   const [errorMessage, setErrorMessage] = useState("");
   const [form, setForm] = useState({
     email: '',
@@ -42,6 +43,8 @@ function Login(prop) {
     }).then(data =>{
       console.log(data.token)
       setTokenFn({token:data.token,email:form.email})
+      console.log("StudentID ", data.id)
+      setIdFn(data.id)
       setErrorMessage("");
       resetButton();
       navigate('/mycourses')

@@ -35,7 +35,7 @@ function CourseList(prop) {
             return (
               <Col key={item.code} className="text-center" xs={12} md={4}>
                 <Card className="my-2">
-                  <Card.Header as="h5">{item.code} {item.cname}</Card.Header>
+                  <Card.Header as="h5">{item.code} | {item.cname}</Card.Header>
                   <Card.Body>
                     <Card.Text>
                       {item.description}
