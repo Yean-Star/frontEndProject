@@ -48,7 +48,7 @@ function MyCourses(prop) {
         }}>Welcome, {myCourseArr[0].name}!</h4></Card.Text></Card.Body>
       </Card>
       }
-      {!token && <h3 className="justify-content-center pt-2" >Not login yet. Please login first.</h3>}
+      {!token && <h3>Not login yet. Please login first.</h3>}
       <Row className="justify-content-center pt-2">
         {
           myCourseArr.map((item, index) => {
