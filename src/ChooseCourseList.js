@@ -86,7 +86,7 @@ function ChooseCourseList(prop) {
                 </select>
               </Card.Text>
               <Button style={{backgroundColor: '#FFF9DE', color: 'black' }} onClick={handleSubmit} >
-                Submit
+                Add
               </Button>
             </Card.Body>
           </Card>

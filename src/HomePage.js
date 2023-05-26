@@ -116,7 +116,7 @@ function HomePage(prop) {
         <Card className="pt-2" style={{
           width: 'fit-content',
           padding: '13px',
-          fontSize: '30px',
+          fontSize: '25px',
           backgroundColor: '#F9FBE7',
           border: '2px solid #ccc',
           borderRadius: '10px',
@@ -128,7 +128,7 @@ function HomePage(prop) {
         <Card className="pt-2" style={{
           width: 'fit-content',
           padding: '13px',
-          fontSize: '30px',
+          fontSize: '25px',
           backgroundColor: '#F9FBE7',
           border: '2px solid #ccc',
           borderRadius: '10px',
