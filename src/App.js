@@ -19,6 +19,7 @@ import EditName from './EditName';
 import { useNavigate } from 'react-router-dom';
 
 import bearIcon from './image/monkey.png';
+import pencilIcon from './image/pencil.png';
 
 function App() {
   const [content, setContent] = useState(-1);
@@ -127,14 +128,20 @@ function App() {
                         to="/editname"
                         onClick={() => handleClick(-1)}
                       >
-                        {tokenData.name} {tokenData.lastname}
+                        <img
+                          alt=""
+                          src={pencilIcon}
+                          width="20"
+                          height="20"
+                          style={{marginRight:'4px',marginBottom:'3px'}}
+                        />{tokenData.name} {tokenData.lastname}
                       </Nav.Link>
                     </Card.Body>
                   </Card>
                 </>
               ) : (
                 <>
-                  <Card style={{ marginRight: '5px',width:'fit-content' }}>
+                  <Card style={{ marginRight: '5px', width: 'fit-content' }}>
                     <Card.Body style={{ fontWeight: '700' }}>
                       <Nav.Link
                         as={Link}
@@ -146,7 +153,7 @@ function App() {
                       </Nav.Link>
                     </Card.Body>
                   </Card>
-                  <Card style={{ width:'fit-content' }}>
+                  <Card style={{ width: 'fit-content' }}>
                     <Card.Body style={{ fontWeight: '700' }}>
                       <Nav.Link
                         as={Link}
